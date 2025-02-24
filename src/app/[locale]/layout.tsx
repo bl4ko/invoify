@@ -37,8 +37,8 @@ export const metadata: Metadata = {
         canonical: BASE_URL,
     },
     authors: {
-        name: "Ali Abbasov",
-        url: "https://aliabb.vercel.app",
+        name: "bl4ko",
+        url: "https://about.bl4ko.com",
     },
     verification: {
         google: GOOGLE_SC_VERIFICATION,

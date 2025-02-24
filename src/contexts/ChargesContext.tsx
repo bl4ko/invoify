@@ -93,7 +93,7 @@ export const ChargesContextProvider = ({ children }: ChargesContextProps) => {
 
     // ? Old approach of using totalInWords variable
     // totalInWords ? true : false
-    const [totalInWordsSwitch, setTotalInWordsSwitch] = useState<boolean>(true);
+    const [totalInWordsSwitch, setTotalInWordsSwitch] = useState<boolean>(false);
 
     // Initial subtotal and total
     const [subTotal, setSubTotal] = useState<number>(0);
@@ -231,9 +231,7 @@ export const ChargesContextProvider = ({ children }: ChargesContextProps) => {
         setValue("details.discountDetails.amountType", discountAmountType);
         setValue("details.taxDetails.amountType", taxAmountType);
         setValue("details.shippingDetails.costType", shippingCostType);
-
         setValue("details.totalAmount", total);
-        
         if (totalInWordsSwitch) {
             setValue("details.totalAmountInWords", formatPriceToString(total, getValues("details.currency")));
         } else {

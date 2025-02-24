@@ -5,12 +5,12 @@ import { formatNumberWithCommas, isDataUrl } from "@/lib/helpers";
 import { DATE_OPTIONS } from "@/lib/variables";
 import { InvoiceType } from "@/types";
 // import { useTranslations } from "next-intl"
-import { getTranslations } from "next-intl/server"
+// import { getTranslations } from "next-intl/server"
 
-export default async function InvoiceTemplate(data: InvoiceType) {
+export default function InvoiceTemplate(data: InvoiceType) {
     const { sender, receiver, details } = data;
 
-    const t = await getTranslations('template')
+    // const t = await getTranslations('template')
 
     return (
         <InvoiceLayout data={data}>
@@ -30,25 +30,28 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                 </div>
                 <div className="text-right">
                     <h2 className="text-2xl md:text-3xl font-semibold text-gray-800">
-                        {t('invoice')} #
+                        {/* {t('invoice')} # */}
+                        Račun
                     </h2>
                     <span className="mt-1 block text-gray-500">
                         {details.invoiceNumber}
                     </span>
-                    <address className="mt-4 not-italic text-gray-800">
+                    <address className="mt-4 not-italic text-gray-800 text-right">
                         {sender.address}
                         <br />
                         {sender.zipCode} {sender.city}, {sender.country}
                         <br />
                         {sender.vat && (
                             <>
-                                {t('vat')}: {sender.vat}
+                                {/* {t('vat')}: {sender.vat} */}
+                                Davčna številka: {sender.vat}
                                 <br />
                             </>
                         )}
                         {sender.iban && (
                             <>
-                                {t('iban')}: {sender.iban}
+                                {/* {t('iban')}: {sender.iban} */}
+                                IBAN: {sender.iban}
                                 <br />
                             </>
                         )}
@@ -59,7 +62,8 @@ export default async function InvoiceTemplate(data: InvoiceType) {
             <div className="mt-6 grid sm:grid-cols-2 gap-3">
                 <div>
                     <h3 className="text-lg font-semibold text-gray-800">
-                        {t('billTo')}
+                        {/* {t('billTo')} */}
+                        Račun za
                     </h3>
                     <h3 className="text-lg font-semibold text-gray-800">
                         {receiver.name}
@@ -71,13 +75,15 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                         <br />
                         {receiver.vat && (
                             <>
-                                {t('vat')}: {receiver.vat}
+                                {/* {t('vat')}: {receiver.vat} */}
+                                Davčna številka: {receiver.vat}
                                 <br />
                             </>
                         )}
                         {receiver.iban && (
                             <>
-                                {t('iban')}: {receiver.iban}
+                                {/* {t('iban')}: {receiver.iban} */}
+                                IBAN: {receiver.iban}
                                 <br />
                             </>
                         )}
@@ -87,21 +93,23 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                     <div className="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                         <dl className="grid sm:grid-cols-6 gap-x-3">
                             <dt className="col-span-3 font-semibold text-gray-800">
-                                {t('invoiceDate')}:
+                                {/* {t('invoiceDate')}: */}
+                                Datum računa:
                             </dt>
                             <dd className="col-span-3 text-gray-500">
                                 {new Date(
                                     details.invoiceDate
-                                ).toLocaleDateString("en-US", DATE_OPTIONS)}
+                  ).toLocaleDateString("sl-SI", DATE_OPTIONS)}
                             </dd>
                         </dl>
                         <dl className="grid sm:grid-cols-6 gap-x-3">
                             <dt className="col-span-3 font-semibold text-gray-800">
-                                {t('dueDate')}:
+                                {/* {t('dueDate')}: */}
+                                Datum zapadlosti:
                             </dt>
                             <dd className="col-span-3 text-gray-500">
                                 {new Date(details.dueDate).toLocaleDateString(
-                                    "en-US",
+                                    "sl-SI",
                                     DATE_OPTIONS
                                 )}
                             </dd>
@@ -114,19 +122,24 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                 <div className="border border-gray-200 p-1 rounded-lg space-y-1">
                     <div className="grid grid-cols-5">
                         <div className="text-left text-xs font-medium text-gray-500 uppercase">
-                            {t('item')}
+                            {/* {t('item')} */}
+                            Ime in opis
                         </div>
                         <div className="text-left text-xs font-medium text-gray-500 uppercase">
-                            {t('quantity')}
+                            {/* {t('quantity')} */}
+                            Kol.
                         </div>
                         <div className="text-left text-xs font-medium text-gray-500 uppercase">
-                            {t('unit')}
+                            {/* {t('unit')} */}
+                            Enota
                         </div>
                         <div className="text-left text-xs font-medium text-gray-500 uppercase">
-                            {t('rate')}
+                            {/* {t('rate')} */}
+                            Postavka
                         </div>
                         <div className="text-right text-xs font-medium text-gray-500 uppercase">
-                            {t('total')}
+                            {/* {t('total')} */}
+                            Končni znesek
                         </div>
                     </div>
                     <div className="hidden sm:block border-b border-gray-200"></div>
@@ -171,9 +184,12 @@ export default async function InvoiceTemplate(data: InvoiceType) {
             <div className="mt-2 flex sm:justify-end">
                 <div className="sm:text-right space-y-2">
                     <div className="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
+                      { details.taxDetails?.amount != undefined &&
+                         details.taxDetails?.amount > 0 && (
                         <dl className="grid sm:grid-cols-5 gap-x-3">
                             <dt className="col-span-3 font-semibold text-gray-800">
-                                {t('subTotal')}:
+                                {/* {t('subTotal')}: */}
+                                Skupaj
                             </dt>
                             <dd className="col-span-2 text-gray-500">
                                 {formatNumberWithCommas(
@@ -182,11 +198,13 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                                 {details.currency}
                             </dd>
                         </dl>
+                        )}
                         {details.discountDetails?.amount != undefined &&
                             details.discountDetails?.amount > 0 && (
                                 <dl className="grid sm:grid-cols-5 gap-x-3">
                                     <dt className="col-span-3 font-semibold text-gray-800">
-                                        {t('discount')}:
+                                        {/* {t('discount')}: */}
+                                        Popust
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.discountDetails.amountType ===
@@ -200,7 +218,8 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                             details.taxDetails?.amount > 0 && (
                                 <dl className="grid sm:grid-cols-5 gap-x-3">
                                     <dt className="col-span-3 font-semibold text-gray-800">
-                                        {t('tax')}:
+                                        {/* {t('tax')}: */}
+                                        Davek
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.taxDetails.amountType ===
@@ -214,7 +233,8 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                             details.shippingDetails?.cost > 0 && (
                                 <dl className="grid sm:grid-cols-5 gap-x-3">
                                     <dt className="col-span-3 font-semibold text-gray-800">
-                                        {t('shipping')}:
+                                        {/* {t('shipping')}: */}
+                                        Poštnina
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.shippingDetails.costType ===
@@ -226,7 +246,8 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                             )}
                         <dl className="grid sm:grid-cols-5 gap-x-3">
                             <dt className="col-span-3 font-semibold text-gray-800">
-                                {t('total')}:
+                                {/* {t('total')}: */}
+                                Skupaj
                             </dt>
                             <dd className="col-span-2 text-gray-500">
                                 {formatNumberWithCommas(
@@ -238,7 +259,8 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                         {details.totalAmountInWords && (
                             <dl className="grid sm:grid-cols-5 gap-x-3">
                                 <dt className="col-span-3 font-semibold text-gray-800">
-                                    {t('totalInWords')}:
+                                    {/* {t('totalInWords')}: */}
+                                    Skupaj z besedami
                                 </dt>
                                 <dd className="col-span-2 text-gray-500">
                                     <em>
@@ -256,7 +278,8 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                 <div className="my-4">
                     <div className="my-2">
                         <p className="font-semibold text-blue-600">
-                            {t('additionalNotes')}:
+                            {/* {t('additionalNotes')}: */}
+                            Dodatne opombe
                         </p>
                         <p className="font-regular text-gray-800">
                             {details.additionalNotes}
@@ -264,7 +287,8 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                     </div>
                     <div className="my-2">
                         <p className="font-semibold text-blue-600">
-                            {t('paymentTerms')}:
+                            {/* {t('paymentTerms')}: */}
+                            Plačilni pogoji
                         </p>
                         <p className="font-regular text-gray-800">
                             {details.paymentTerms}
@@ -272,23 +296,28 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                     </div>
                     <div className="my-2">
                         <span className="font-semibold text-md text-gray-800">
-                           {t('sendThePaymentToDescription')}
+                           {/* {t('sendThePaymentToDescription')} */}
+                           Prosimo, pošljite plačilo na naslov
                             <p className="text-sm">
-                                {t('bank')}: {details.paymentInformation?.bankName}
+                                {/* {t('bank')}: {details.paymentInformation?.bankName} */}
+                                Banka: {details.paymentInformation?.bankName}
                             </p>
                             <p className="text-sm">
-                                {t("accountName")}:{" "}
+                                {/* {t("accountName")}:{" "} */}
+                                Ime računa:{" "}
                                 {details.paymentInformation?.accountName}
                             </p>
                             <p className="text-sm">
-                                {t("accountNumber")}:{" "}
+                                {/* {t("accountNumber")}:{" "} */}
+                                Številka računa:{" "}
                                 {details.paymentInformation?.accountNumber}
                             </p>
                         </span>
                     </div>
                 </div>
                 <p className="text-gray-500 text-sm">
-                   {t('contactInformationDescription')}
+                   {/* {t('contactInformationDescription')} */}
+                    Kontaktni podatki
                 </p>
                 <div>
                     <p className="block text-sm font-medium text-gray-800">
@@ -303,7 +332,8 @@ export default async function InvoiceTemplate(data: InvoiceType) {
             {/* Signature */}
             {details?.signature?.data && isDataUrl(details?.signature?.data) ? (
                 <div className="mt-6">
-                    <p className="font-semibold text-gray-800">{t('signature')}:</p>
+                    {/* <p className="font-semibold text-gray-800">{t('signature')}:</p> */}
+                    <p className="font-semibold text-gray-800">Podpis:</p>
                     <img
                         src={details.signature.data}
                         width={120}
@@ -313,7 +343,8 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                 </div>
             ) : details.signature?.data ? (
                 <div className="mt-6">
-                    <p className="text-gray-800">{t('signature')}:</p>
+                    {/* <p className="text-gray-800">{t('signature')}:</p> */}
+                    <p className="text-gray-800">podpis:</p>
                     <p
                         style={{
                             fontSize: 30,

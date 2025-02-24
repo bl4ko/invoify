@@ -184,6 +184,7 @@ export const InvoiceContextProvider = ({
    * Downloads a PDF file.
    */
   const downloadPdf = () => {
+    console.log("Download PDF");
     // Only download if there is an invoice
     if (invoicePdf instanceof Blob && invoicePdf.size > 0) {
       // Create a blob URL to trigger the download
