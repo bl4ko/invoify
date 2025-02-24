@@ -33,13 +33,18 @@ const fieldValidators = {
         .string()
         .email({ message: "Email must be a valid email" })
         .min(5, { message: "Must be between 5 and 30 characters" })
-        .max(30, { message: "Must be between 5 and 30 characters" }),
+        .max(30, { message: "Must be between 5 and 30 characters" })
+        .optional()
+        .or(z.literal('')),
+
     phone: z
         .string()
         .min(1, { message: "Must be between 1 and 50 characters" })
         .max(50, {
             message: "Must be between 1 and 50 characters",
-        }),
+        })
+        .optional()
+        .or(z.literal('')),
 
     // Dates
     date: z
@@ -58,6 +63,7 @@ const fieldValidators = {
 
     // Strings
     string: z.string(),
+    stringMin0: z.string().min(0, { message: "Must be at least 0 characters" }),
     stringMin1: z.string().min(1, { message: "Must be at least 1 character" }),
     stringToNumber: z.coerce.number(),
 
@@ -93,6 +99,8 @@ const InvoiceSenderSchema = z.object({
     country: fieldValidators.country,
     email: fieldValidators.email,
     phone: fieldValidators.phone,
+    vat: fieldValidators.stringOptional,
+    iban: fieldValidators.stringOptional,
     customInputs: z.array(CustomInputSchema).optional(),
 });
 
@@ -104,6 +112,7 @@ const InvoiceReceiverSchema = z.object({
     country: fieldValidators.country,
     email: fieldValidators.email,
     phone: fieldValidators.phone,
+    vat: fieldValidators.stringOptional,
     customInputs: z.array(CustomInputSchema).optional(),
 });
 
@@ -111,6 +120,7 @@ const ItemSchema = z.object({
     name: fieldValidators.stringMin1,
     description: fieldValidators.stringOptional,
     quantity: fieldValidators.quantity,
+    unitName: fieldValidators.stringMin1,
     unitPrice: fieldValidators.unitPrice,
     total: fieldValidators.stringToNumber,
 });
@@ -159,7 +169,7 @@ const InvoiceDetailsSchema = z.object({
     totalAmount: fieldValidators.nonNegativeNumber,
     totalAmountInWords: fieldValidators.string,
     additionalNotes: fieldValidators.stringOptional,
-    paymentTerms: fieldValidators.stringMin1,
+    paymentTerms: fieldValidators.stringMin0.optional(),
     signature: SignatureSchema.optional(),
     updatedAt: fieldValidators.stringOptional,
     pdfTemplate: z.number(),

@@ -60,6 +60,7 @@ export const LOCALES = [
     { code: "fr", name: "Français" },
     { code: "ar", name: "العربية" },
     { code: "pt-BR", name: "Português (Brasil)" },
+    { code: "sl", name: "Slovenščina" },
 ]
 export const DEFAULT_LOCALE = LOCALES[0].code;
 
@@ -206,6 +207,7 @@ export const FORM_FILL_VALUES = {
                 description: "Description of Product 1",
                 quantity: 4,
                 unitPrice: 50,
+                unit: "month",
                 total: 200,
             },
             {
@@ -213,12 +215,14 @@ export const FORM_FILL_VALUES = {
                 description: "Description of Product 2",
                 quantity: 5,
                 unitPrice: 50,
+                unit: "hour",
                 total: 250,
             },
             {
                 name: "Product 3",
                 description: "Description of Product 3",
                 quantity: 5,
+                unit: "year",
                 unitPrice: 80,
                 total: 400,
             },

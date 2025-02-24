@@ -1,0 +1,123 @@
+{
+  "template": {
+    "invoice": "Račun",
+    "billTo": "Račun za",
+    "invoiceDate": "Datum računa",
+    "dueDate": "Datum zapadlosti",
+    "item": "Ime in opis",
+    "quantity": "Kol.",
+    "rate": "Postavka",
+    "unitName": "Enota",
+    "amount": "Enota",
+    "subTotal": "Skupaj",
+    "total": "Končni znesek",
+    "vat": "Davčna številka",
+    "unit": "Enota",
+    "totalInWords": "Skupaj z besedami",
+    "additionalNotes": "Dodatne opombe",
+    "signature": "Podpis",
+    "paymentTerms": "Plačilni pogoji",
+    "bank": "Banka",
+    "shipping": "Dostava",
+    "tax": "Davek",
+    "discount": "Popust",
+    "accountName": "Ime računa",
+    "accountNumber": "Številka računa",
+    "sendThePaymentToDescription": "Prosimo, pošljite plačilo na naslov",
+    "contactInformationDescription": "Če imate kakršnakoli vprašanja v zvezi s tem računom, lahko uporabite naslednje kontaktne podatke:",
+    "iban": "IBAN"
+  },
+  "form": {
+    "title": "Račun",
+    "description": "Ustvari račun",
+    "newInvBadge": "Nov račun",
+    "wizard": {
+      "fromAndTo": "Od & Do",
+      "invoiceDetails": "Podrobnosti računa",
+      "lineItems": "Postavke",
+      "paymentInfo": "Plačilni podatki",
+      "summary": "Povzetek",
+      "next": "Naprej",
+      "back": "Nazaj"
+    },
+    "steps": {
+      "fromAndTo": {
+        "billFrom": "Račun od",
+        "billTo": "Račun za",
+        "name": "Ime",
+        "address": "Naslov",
+        "zipCode": "Poštna številka",
+        "city": "Mesto",
+        "country": "Država",
+        "email": "E-pošta",
+        "phone": "Telefon",
+        "addCustomInput": "Dodaj poljubni vnos",
+        "sender": "Pošiljatelj",
+        "receiver": "Prejemnik",
+        "vat": "Davčna številka",
+        "iban": "IBAN"
+      },
+      "invoiceDetails": {
+        "heading": "Podrobnosti računa",
+        "invoiceLogo": {
+          "label": "Logotip računa",
+          "placeholder": "Kliknite za nalaganje slike"
+        },
+        "invoiceNumber": "Številka računa",
+        "issuedDate": "Datum izdaje",
+        "dueDate": "Datum zapadlosti",
+        "currency": "Valuta"
+      },
+      "lineItems": {
+        "heading": "Postavke",
+        "item": "Postavka",
+        "name": "Ime",
+        "quantity": "Količina",
+        "rate": "Cena",
+        "total": "Skupaj",
+        "description": "Opis",
+        "addNewItem": "Dodaj novo postavko",
+        "removeItem": "Odstrani postavko",
+        "unit": "Enota"
+      },
+      "paymentInfo": {
+        "heading": "Plačilni podatki",
+        "bankName": "Ime banke",
+        "accountName": "Ime računa",
+        "accountNumber": "Številka računa"
+      },
+      "summary": {
+        "heading": "Povzetek",
+        "signature": {
+          "heading": "Podpis",
+          "placeholder": "Kliknite za dodajanje podpisa",
+          "draw": "Nariši",
+          "type": "Tipkajte",
+          "upload": "Naloži"
+        },
+        "additionalNotes": "Dodatne opombe",
+        "paymentTerms": "Plačilni pogoji",
+        "discount": "Popust",
+        "tax": "Davek",
+        "shipping": "Dostava",
+        "subTotal": "Skupaj",
+        "totalAmount": "Skupni znesek",
+        "includeTotalInWords": "Vključi skupni znesek z besedami?",
+        "yes": "Da",
+        "no": "Ne"
+      }
+    }
+  },
+  "actions": {
+    "title": "Dejanja",
+    "description": "Operacije in predogled",
+    "loadInvoice": "Naloži račun",
+    "exportInvoice": "Izvozi račun",
+    "newInvoice": "Nov račun",
+    "generatePdf": "Ustvari PDF",
+    "pdfView": "Ogled PDF"
+  },
+  "footer": {
+    "developedBy": "Izdelano s strani"
+  }
+}

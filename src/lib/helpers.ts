@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 import numberToWords from "number-to-words";
 
 // Currencies
-import currenciesDetails from "@/public/assets/data/currencies.json";
+import currenciesDetails from "@/data/currencies.json";
 import { CurrencyDetails } from "@/types";
 
 /**
@@ -23,7 +23,7 @@ const formatNumberWithCommas = (number: number) => {
 };
 
 /**
- * @param {string} currency - The currency that is currently selected 
+ * @param {string} currency - The currency that is currently selected
  * @returns {Object} - An object containing the currency details as
  * ```
  * {
@@ -51,7 +51,7 @@ const formatPriceToString = (price: number, currency: string): string => {
     let decimals : number;
     let beforeDecimal: string | null = null;
     let afterDecimal: string | null = null;
-    
+
     const currencyDetails = fetchCurrencyDetails(currency);
 
     // If currencyDetails is available, use its values, else dynamically set decimals
@@ -71,7 +71,7 @@ const formatPriceToString = (price: number, currency: string): string => {
 
     // Split the price into integer and fractional parts
     const integerPart = Math.floor(roundedPrice);
-    
+
     const fractionalMultiplier = Math.pow(10, decimals);
     const fractionalPart = Math.round((roundedPrice - integerPart) * fractionalMultiplier);
 
@@ -94,7 +94,7 @@ const formatPriceToString = (price: number, currency: string): string => {
     // Combine the parts into the final string
     let result = integerPartInWords;
 
-    // Check if beforeDecimal is not null 
+    // Check if beforeDecimal is not null
     if (beforeDecimal !== null) {
         result += ` ${beforeDecimal}`;
     }

@@ -59,6 +59,11 @@ const SingleItem = ({
         control,
     });
 
+    const unitName = useWatch({
+        name: `${name}[${index}].unitName`,
+        control,
+    });
+
     const quantity = useWatch({
         name: `${name}[${index}].quantity`,
         control,
@@ -170,6 +175,13 @@ const SingleItem = ({
                     label={_t("form.steps.lineItems.quantity")}
                     placeholder={_t("form.steps.lineItems.quantity")}
                     className="w-[8rem]"
+                    vertical
+                />
+
+                <FormInput
+                    name={`${name}[${index}].unitName`}
+                    label={_t("form.steps.lineItems.unit")}
+                    placeholder={_t("form.steps.lineItems.unit")}
                     vertical
                 />
 

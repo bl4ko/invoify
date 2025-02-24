@@ -1,4 +1,32 @@
 {
+    "template": {
+        "invoice": "Invoice",
+        "billTo": "Bill To",
+        "invoiceDate": "Invoice Date",
+        "dueDate": "Due Date",
+        "item": "Item",
+        "quantity": "Qty",
+        "rate": "Rate",
+        "unit": "Unit",
+        "amount": "Amount",
+        "subTotal": "Subtotal",
+        "total": "Total",
+        "unitName": "Unit",
+        "totalInWords": "Total in words",
+        "additionalNotes": "Additional Notes",
+        "signature": "Signature",
+        "paymentTerms": "Payment Terms",
+        "bank": "Bank",
+        "vat": "VAT",
+        "iban": "IBAN",
+        "shipping": "Shipping",
+        "tax": "Tax",
+        "discount": "Discount",
+        "accountName": "Account name",
+        "accountNumber": "Account no",
+        "sendThePaymentToDescription": "Please send the payment to this address",
+        "contactInformationDescription": "If you have any questions concerning this invoice, use the following contact information:"
+    },
     "form": {
         "title": "Invoice",
         "description": "Generate Invoice",
@@ -25,7 +53,9 @@
                 "phone": "Phone",
                 "addCustomInput": "Add Custom Input",
                 "sender": "Sender",
-                "receiver": "Receiver"
+                "receiver": "Receiver",
+                "vat": "VAT",
+                "iban": "IBAN"
             },
             "invoiceDetails": {
                 "heading": "Invoice Details",

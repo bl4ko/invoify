@@ -1,3 +1,8 @@
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { routing } from '@/i18n/routing';
+
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -10,35 +15,18 @@ import {
     parisienne,
 } from "@/lib/fonts";
 
-// Favicon
-import Favicon from "@/public/assets/favicon/favicon.ico";
-
-// Vercel Analytics
 import { Analytics } from "@vercel/analytics/react";
-
-// Next Intl
-import { NextIntlClientProvider } from "next-intl";
-
-// ShadCn
 import { Toaster } from "@/components/ui/toaster";
-
-// Components
 import { BaseNavbar, BaseFooter } from "@/app/components";
-
-// Contexts
 import Providers from "@/contexts/Providers";
-
-// SEO
 import { JSONLD, ROOTKEYWORDS } from "@/lib/seo";
-
-// Variables
 import { BASE_URL, GOOGLE_SC_VERIFICATION, LOCALES } from "@/lib/variables";
 
 export const metadata: Metadata = {
     title: "Invoify | Free Invoice Generator",
     description:
         "Create invoices effortlessly with Invoify, the free invoice generator. Try it now!",
-    icons: [{ rel: "icon", url: Favicon.src }],
+    icons: [{ rel: "icon", url: "/assets/favicon/favicon.ico" }],
     keywords: ROOTKEYWORDS,
     viewport: "width=device-width, initial-scale=1",
     robots: {
@@ -69,12 +57,14 @@ export default async function LocaleLayout({
     children: React.ReactNode;
     params: { locale: string };
 }) {
-    let messages;
-    try {
-        messages = (await import(`@/i18n/locales/${locale}.json`)).default;
-    } catch (error) {
+    // Ensure that the incoming `locale` is valid
+    if (!routing.locales.includes(locale as any))  {
         notFound();
     }
+
+    // Providing all messages to the client
+    // side is the easiest way to get started
+    const messages = await getMessages();
 
     return (
         <html lang={locale}>
@@ -88,7 +78,7 @@ export default async function LocaleLayout({
             <body
                 className={`${outfit.className} ${dancingScript.variable} ${parisienne.variable} ${greatVibes.variable} ${alexBrush.variable} antialiased bg-slate-100 dark:bg-slate-800`}
             >
-                <NextIntlClientProvider locale={locale} messages={messages}>
+                <NextIntlClientProvider messages={messages}>
                     <Providers>
                         <BaseNavbar />
 

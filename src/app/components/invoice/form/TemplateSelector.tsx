@@ -2,10 +2,7 @@
 
 import Image from "next/image";
 
-// RHF
 import { useFormContext } from "react-hook-form";
-
-// ShadCn
 import {
     Card,
     CardContent,
@@ -13,21 +10,12 @@ import {
     CardHeader,
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-
-// Components
 import {
     BaseButton,
     InvoiceTemplate1,
     InvoiceTemplate2,
 } from "@/app/components";
-
-// Template images
-import template1 from "@/public/assets/img/invoice-1-example.png";
-
-// Icons
 import { Check } from "lucide-react";
-
-// Types
 import { InvoiceType } from "@/types";
 
 const TemplateSelector = () => {
@@ -38,14 +26,14 @@ const TemplateSelector = () => {
             id: 1,
             name: "Template 1",
             description: "Template 1 description",
-            img: template1,
+            img: "/assets/img/invoice-1-example.png",
             component: <InvoiceTemplate1 {...formValues} />,
         },
         {
             id: 2,
             name: "Template 2",
             description: "Second template",
-            img: template1,
+            img: "/assets/img/invoice-2-example.png",
             component: <InvoiceTemplate2 {...formValues} />,
         },
     ];
@@ -83,7 +71,6 @@ const TemplateSelector = () => {
                                                 alt={template.name}
                                                 width={300}
                                                 height={700}
-                                                placeholder="blur"
                                                 className="cursor-pointer rounded-lg border-2 hover:border-blue-600"
                                                 onClick={() =>
                                                     setValue(
