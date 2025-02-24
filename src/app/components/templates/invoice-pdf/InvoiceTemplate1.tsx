@@ -4,17 +4,17 @@ import { InvoiceLayout } from "@/app/components";
 import { formatNumberWithCommas, isDataUrl } from "@/lib/helpers";
 import { DATE_OPTIONS } from "@/lib/variables";
 import { InvoiceType } from "@/types";
-import { useTranslations, useLocale } from 'next-intl';
+// import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
 
 export default async function InvoiceTemplate(data: InvoiceType) {
     const { sender, receiver, details } = data;
 
-    const { locale } = useLocale()
-    const t = useTranslations('template')
+    const t = await getTranslations('template')
 
     return (
         <InvoiceLayout data={data}>
-            <div className="flex justify-between">
+            <div className="flex justify-between" id="template">
                 <div>
                     {details.invoiceLogo && (
                         <img
@@ -92,7 +92,7 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                             <dd className="col-span-3 text-gray-500">
                                 {new Date(
                                     details.invoiceDate
-                                ).toLocaleDateString(locale, DATE_OPTIONS)}
+                                ).toLocaleDateString("en-US", DATE_OPTIONS)}
                             </dd>
                         </dl>
                         <dl className="grid sm:grid-cols-6 gap-x-3">
@@ -101,7 +101,7 @@ export default async function InvoiceTemplate(data: InvoiceType) {
                             </dt>
                             <dd className="col-span-3 text-gray-500">
                                 {new Date(details.dueDate).toLocaleDateString(
-                                    locale,
+                                    "en-US",
                                     DATE_OPTIONS
                                 )}
                             </dd>

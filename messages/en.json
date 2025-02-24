@@ -77,7 +77,8 @@
                 "total": "Total",
                 "description": "Description",
                 "addNewItem": "Add a new item",
-                "removeItem": "Remove item"
+                "removeItem": "Remove item",
+                "unit": "Unit"
             },
             "paymentInfo": {
                 "heading": "Payment Information",

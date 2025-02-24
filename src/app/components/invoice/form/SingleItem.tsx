@@ -180,6 +180,7 @@ const SingleItem = ({
 
                 <FormInput
                     name={`${name}[${index}].unitName`}
+                    type="string"
                     label={_t("form.steps.lineItems.unit")}
                     placeholder={_t("form.steps.lineItems.unit")}
                     vertical

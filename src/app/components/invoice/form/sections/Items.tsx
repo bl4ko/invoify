@@ -50,6 +50,7 @@ const Items = () => {
             name: "",
             description: "",
             quantity: 0,
+            unit: "",
             unitPrice: 0,
             total: 0,
         });

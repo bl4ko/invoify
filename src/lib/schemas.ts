@@ -113,6 +113,7 @@ const InvoiceReceiverSchema = z.object({
     email: fieldValidators.email,
     phone: fieldValidators.phone,
     vat: fieldValidators.stringOptional,
+    iban: fieldValidators.stringOptional,
     customInputs: z.array(CustomInputSchema).optional(),
 });
 

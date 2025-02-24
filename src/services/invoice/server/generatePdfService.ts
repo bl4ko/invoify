@@ -1,15 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Chromium
 import chromium from "@sparticuz/chromium";
-
-// Helpers
 import { getInvoiceTemplate } from "@/lib/helpers";
-
-// Variables
 import { CHROMIUM_EXECUTABLE_PATH, ENV, TAILWIND_CDN } from "@/lib/variables";
-
-// Types
 import { InvoiceType } from "@/types";
 
 /**

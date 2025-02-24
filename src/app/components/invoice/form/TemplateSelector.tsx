@@ -18,7 +18,7 @@ import {
 import { Check } from "lucide-react";
 import { InvoiceType } from "@/types";
 
-const TemplateSelector = () => {
+export default function TemplateSelector() {
     const { watch, setValue } = useFormContext<InvoiceType>();
     const formValues = watch();
     const templates = [
@@ -102,5 +102,3 @@ const TemplateSelector = () => {
         </>
     );
 };
-
-export default TemplateSelector;
